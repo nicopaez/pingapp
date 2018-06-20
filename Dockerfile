@@ -1,12 +1,20 @@
 FROM ruby:2.2.0
 
-RUN mkdir -p /var/www/pingapp
+LABEL author nicopaez
 
-ADD . /var/www/pingapp
+RUN mkdir -p /apps/pingapp
 
-WORKDIR /var/www/pingapp
+ADD . /apps/pingapp
+
+WORKDIR /apps/pingapp
 
 RUN bundle install --system --without test development
+
+RUN groupadd -g 999 appuser && \
+    useradd -r -u 999 -g appuser appuser && \
+    chown -R appuser /apps
+
+USER appuser
 
 EXPOSE 4567
 
