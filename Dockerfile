@@ -1,6 +1,6 @@
 FROM ruby:2.2.0
 
-LABEL author nicopaez
+LABEL maintainer nicopaez
 
 RUN mkdir -p /apps/pingapp
 
@@ -8,7 +8,7 @@ ADD . /apps/pingapp
 
 WORKDIR /apps/pingapp
 
-RUN bundle install --system --without test development
+RUN bundle install
 
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser && \

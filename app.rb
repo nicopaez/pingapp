@@ -2,7 +2,7 @@ require 'sinatra'
 require 'date'
 require 'json'
 
-VERSION = '20180620'
+VERSION = '2.0.0'
 
 before do
   content_type 'application/json'
