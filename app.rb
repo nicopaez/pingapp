@@ -1,8 +1,9 @@
 require 'sinatra'
 require 'date'
 require 'json'
+require 'socket'
 
-VERSION = '2.0.0'
+VERSION = '2.1.0'
 
 before do
   content_type 'application/json'
@@ -13,7 +14,8 @@ get '/' do
     :version => VERSION, 
     :ping => DateTime.now.to_s, 
     :config_location => ENV['CONFIG_LOCATION'], 
-    :secrets_location => ENV['SECRETS_LOCATION']
+    :secrets_location => ENV['SECRETS_LOCATION'],
+    :host => Socket.gethostname
   }
   result.to_json
 end
