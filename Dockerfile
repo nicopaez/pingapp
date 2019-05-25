@@ -1,4 +1,4 @@
-FROM ruby:2.2.0
+FROM ruby:2.5.1
 
 LABEL maintainer nicopaez
 
