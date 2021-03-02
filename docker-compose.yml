@@ -1,0 +1,14 @@
+version: '2'
+services:
+  webapp:
+    build: .    
+    ports:
+      - 4567
+  balancer:
+    depends_on:
+      - webapp
+    build:
+      context: .
+      dockerfile: Dockerfile-balancer
+    ports:
+      - 8080:80

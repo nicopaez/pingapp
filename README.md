@@ -1,4 +1,5 @@
 # pingapp
+
 Just a trivial application I used for my PoC
 To run it locally just execute:
 
@@ -16,9 +17,11 @@ docker login
 docker tag pingapp:20171107.0 nicopaez/pingapp:20171107.0
 docker push nicopaez/pingapp:20171107.0
 ```
+
 Then run docker run -p 4567:4567 -d pingapp:20171107.0 
 
-## To use it with OpenShift
+
+## To use it with OpenShift (not up to date)
 
 ````
 oc new-project devops-tutorial --display-name="DevOps Tutorial"
@@ -30,4 +33,12 @@ oc create configmap config-pingapp --from-file=config.json
 oc create secret generic secrets-pingapp  --from-file=secrets.json
 oc volume dc/pingapp --add --name=config -t configmap --configmap-name=config-pingapp -m /config
 oc volume dc/pingapp --add --name=secrets -t secret --secret-name=secrets-pingapp -m /secrets
+````
+
+## To use docker-compose
+
+````
+docker-compose up
+
+docker-compose up --scale webapp=2
 ````

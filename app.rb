@@ -3,7 +3,7 @@ require 'date'
 require 'json'
 require 'socket'
 
-VERSION = '2.1.1'
+VERSION = '3.0.0'
 
 before do
   content_type 'application/json'

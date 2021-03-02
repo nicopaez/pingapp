@@ -1,3 +1,7 @@
+## 3.0.0
+
+* Updated to ruby 2.5.7
+
 ## 2.1.1
 
 * Updated to ruby 2.5.1
