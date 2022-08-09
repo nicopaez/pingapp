@@ -28,14 +28,16 @@ get '/secrets' do
   return File.read(ENV['SECRETS_LOCATION']);
 end
 
-get '/health' do
-  delay = params['delay']
-  if delay 
-    sleep delay.to_i
-  else
-    delay = 0
-  end
+get '/is-ready' do
   {
-    :delay => delay
+    :result => 'ready'
+  }.to_json
+end
+
+get '/is-alive' do
+  delay = ENV['ALIVE_DELAY'] || 3
+  sleep delay.to_i
+  {
+    :result => 'alive!'
   }.to_json
 end
