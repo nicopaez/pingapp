@@ -3,7 +3,7 @@ require 'date'
 require 'json'
 require 'socket'
 
-VERSION = '3.0.0'
+VERSION = '4.0.0'
 
 before do
   content_type 'application/json'
@@ -26,4 +26,16 @@ end
 
 get '/secrets' do
   return File.read(ENV['SECRETS_LOCATION']);
+end
+
+get '/health' do
+  delay = params['delay']
+  if delay 
+    sleep delay.to_i
+  else
+    delay = 0
+  end
+  {
+    :delay => delay
+  }.to_json
 end
